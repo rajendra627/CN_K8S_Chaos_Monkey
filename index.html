@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8" http-equiv="refresh" content="30">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header><h1 align="center"> Chaos Monkey - Cloud Native Resiliency Test Execution Summary </h1></header>
+  <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+  <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+  <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<div style="width: 30%; height: 50%; float:left;"> <table id="rwd-table" class="block">
+   <tr>
+    <th>Task</th>
+    <th>Total</th>
+    <th>Pass</th>
+    <th>Fail</th>
+  </tr>
+   <tr><td>Pod Kill - Random</td><td>10</td><td>10</td><td>0</td></tr>
+   <tr><td>Docker Container Kill - Random</td><td>6</td><td>6</td><td>0</td></tr>
+   <tr><td>Drain Node - Evit Pods - Random</td><td>5</td><td>5</td><td>0</td></tr>
+   <tr><td>Etcd Node Delete - Random</td><td>5</td><td>5</td><td>0</td></tr>
+   <tr><td>DockerD Restart - Random</td><td>5</td><td>5</td><td>0</td></tr>
+   <tr><td>Worker Node Delete - Random</td><td>5</td><td>5</td><td>0</td></tr>
+   <tr><td>Etcd Node Add - New</td><td>5</td><td>5</td><td>0</td></tr>
+   <tr><td>Kubelet Restart - K8S Node - Random</td><td>5</td><td>5</td><td>0</td></tr>
+   <tr><td>Worker Node Add - New</td><td>5</td><td>5</td><td>0</td></tr>
+   <tr><td>K8S Node - Clean Reboot - Random</td><td>6</td><td>6</td><td>0</td></tr>
+   <tr><td>K8S Node - Emergency Reboot - Random</td><td>8</td><td>6</td><td>2</td></tr>
+   <tr><td>Istio Rules Applied - HTTP Errors</td><td>10</td><td>8</td><td>2</td></tr>
+   <tr><td>Istio Rules Applied - Timeouts</td><td>20</td><td>10</td><td>10</td></tr>
+   <tr><td>Istio Rules Applied - Retries</td><td>30</td><td>15</td><td>15</td></tr>
+   <tr><td>Leaf and Spines - Port Shut & No Shut</td><td>20</td><td>20</td><td>0</td></tr>
+   <tr><td>Leaf and Spines - BGP/BFD Down</td><td>10</td><td>10</td><td>0</td></tr>
+   <tr><td>Leaf and Spines - Clear BGP Peers</td><td>16</td><td>14</td><td>2</td></tr>
+   <tr><td>Leaf and Spines - Clear BGP Routes</td><td>19</td><td>7</td><td>12</td></tr>
+   <tr><td>Leaf and Spines - Switch Reloads</td><td>10</td><td>8</td><td>2</td></tr>
+   <tr><td>K8S Node Clean Reboot</td><td>10</td><td>10</td><td>0</td></tr>
+   <tr><td>K8S Node Emergency Reboot</td><td>10</td><td>10</td><td>2</td></tr>
+  </table></div>
+<div id="chartdiv" style="width: 70%; height: 550px; background-color: #FFFFFF; float:right;" ></div>
+     <table align="center" class="resiliency" style="width:80%" BORDERCOLOR=MAROON id="resiliency">
+      <tr><th colspan="9"> Chaos Monkey - Cloud Native Resiliency Test Execution Results <span style="font-size:12px;color:maroon">(Actual Results Captured from K8S Cluster - 4 Masters, 4 Etcd & 4 Worker Nodes)</span></th></tr>
+      <tr>
+        <th rowspan="2">#</th>
+        <th rowspan="2">Timestamp</th>
+        <th rowspan="2">Resiliency Test Scenario</th>
+        <th colspan="2">5G Subscriber Count</th>
+        <th rowspan="2">Recovery Status</th>
+        <th colspan="2">Crashes Observed</th>
+        <th rowspan="2">Kubetail Logs Captured during this Test</th>
+      </tr>
+      <tr>
+        <th>Before Test</th>
+        <th>After Test</th>
+        <th>Current Run</th>
+        <th>Total So Far</th>
+      </tr>
+
+      <tbody>
+        <tr>
+            <td> 51 </td>
+            <td> 2019-April-08_12h-17m-12s_UTC </td>
+            <td> Docker Kill Container - appserver-6cdb646458-5c45d - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/default.appserver-6cdb646458-5c45d_Redundancy-Test-20190408_081712_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/default.appserver-6cdb646458-5c45d_Redundancy-Test-20190408_081712.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 50 </td>
+            <td> 2019-April-08_12h-15m-08s_UTC </td>
+            <td> Pod Kill - infraserver-5fffd8745b-lqwbj - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/infra.infraserver-5fffd8745b-lqwbj-redundancy-test-20190408_081508_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/infra.infraserver-5fffd8745b-lqwbj-redundancy-test-20190408_081508.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 49 </td>
+            <td> 2019-April-08_12h-14m-04s_UTC </td>
+            <td> Pod Kill - dbserver-84b5c9577d-gkc25 - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/db.dbserver-84b5c9577d-gkc25-redundancy-test-20190408_081404_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/db.dbserver-84b5c9577d-gkc25-redundancy-test-20190408_081404.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 48 </td>
+            <td> 2019-April-08_12h-12m-54s_UTC </td>
+            <td> Worker Node Add - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Add_Redundancy-Test-20190408_081254_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Add_Redundancy-Test-20190408_081254.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 47 </td>
+            <td> 2019-April-08_12h-11m-46s_UTC </td>
+            <td> Kubelet Restart - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.kubelet_restart_Redundancy-Test-20190408_081146_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.kubelet_restart_Redundancy-Test-20190408_081146.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 46 </td>
+            <td> 2019-April-08_12h-10m-20s_UTC </td>
+            <td> Etcd Node Add - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Etcd_Node_Add_Redundancy-Test-20190408_081020_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Etcd_Node_Add_Redundancy-Test-20190408_081020.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 45 </td>
+            <td> 2019-April-08_12h-09m-00s_UTC </td>
+            <td> Worker Node Delete - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Delete_Redundancy-Test-20190408_080900_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Delete_Redundancy-Test-20190408_080900.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 44 </td>
+            <td> 2019-April-08_12h-07m-37s_UTC </td>
+            <td> Dockerd Restart - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.docker_restart_Redundancy-Test-20190408_080737_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.docker_restart_Redundancy-Test-20190408_080737.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 43 </td>
+            <td> 2019-April-08_12h-06m-28s_UTC </td>
+            <td> ETCD Node Delete - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.ETCD_Node_Delete_Redundancy-Test-20190408_080628_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.ETCD_Node_Delete_Redundancy-Test-20190408_080628.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 42 </td>
+            <td> 2019-April-08_12h-04m-05s_UTC </td>
+            <td> Drain Node - Evict Pods - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Node-Drain_Redundancy-Test-20190408_080405_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Node-Drain_Redundancy-Test-20190408_080405.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 41 </td>
+            <td> 2019-April-08_12h-03m-00s_UTC </td>
+            <td> Docker Kill Container - appserver-6cdb646458-5c45d - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/default.appserver-6cdb646458-5c45d_Redundancy-Test-20190408_080300_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/default.appserver-6cdb646458-5c45d_Redundancy-Test-20190408_080300.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 40 </td>
+            <td> 2019-April-08_12h-00m-56s_UTC </td>
+            <td> Pod Kill - infraserver-5fffd8745b-pd2kw - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/infra.infraserver-5fffd8745b-pd2kw-redundancy-test-20190408_080056_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/infra.infraserver-5fffd8745b-pd2kw-redundancy-test-20190408_080056.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 39 </td>
+            <td> 2019-April-08_11h-59m-52s_UTC </td>
+            <td> Pod Kill - dbserver-84b5c9577d-9qb7k - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/db.dbserver-84b5c9577d-9qb7k-redundancy-test-20190408_075952_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/db.dbserver-84b5c9577d-9qb7k-redundancy-test-20190408_075952.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 38 </td>
+            <td> 2019-April-08_11h-58m-42s_UTC </td>
+            <td> Worker Node Add - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Add_Redundancy-Test-20190408_075842_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Add_Redundancy-Test-20190408_075842.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 37 </td>
+            <td> 2019-April-08_11h-57m-34s_UTC </td>
+            <td> Kubelet Restart - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.kubelet_restart_Redundancy-Test-20190408_075734_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.kubelet_restart_Redundancy-Test-20190408_075734.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 36 </td>
+            <td> 2019-April-08_11h-56m-11s_UTC </td>
+            <td> Etcd Node Add - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Etcd_Node_Add_Redundancy-Test-20190408_075611_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Etcd_Node_Add_Redundancy-Test-20190408_075611.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 35 </td>
+            <td> 2019-April-08_11h-54m-52s_UTC </td>
+            <td> Worker Node Delete - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Delete_Redundancy-Test-20190408_075452_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Delete_Redundancy-Test-20190408_075452.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 34 </td>
+            <td> 2019-April-08_11h-53m-41s_UTC </td>
+            <td> Dockerd Restart - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.docker_restart_Redundancy-Test-20190408_075341_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.docker_restart_Redundancy-Test-20190408_075341.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 33 </td>
+            <td> 2019-April-08_11h-52m-31s_UTC </td>
+            <td> ETCD Node Delete - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.ETCD_Node_Delete_Redundancy-Test-20190408_075231_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.ETCD_Node_Delete_Redundancy-Test-20190408_075231.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 32 </td>
+            <td> 2019-April-08_11h-50m-10s_UTC </td>
+            <td> Drain Node - Evict Pods - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Node-Drain_Redundancy-Test-20190408_075010_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Node-Drain_Redundancy-Test-20190408_075010.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 31 </td>
+            <td> 2019-April-08_11h-49m-04s_UTC </td>
+            <td> Docker Kill Container - appserver-6cdb646458-lhcn7 - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/default.appserver-6cdb646458-lhcn7_Redundancy-Test-20190408_074905_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/default.appserver-6cdb646458-lhcn7_Redundancy-Test-20190408_074905.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 30 </td>
+            <td> 2019-April-08_11h-47m-00s_UTC </td>
+            <td> Pod Kill - infraserver-5fffd8745b-gf7fj - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/infra.infraserver-5fffd8745b-gf7fj-redundancy-test-20190408_074701_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/infra.infraserver-5fffd8745b-gf7fj-redundancy-test-20190408_074701.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 29 </td>
+            <td> 2019-April-08_11h-45m-57s_UTC </td>
+            <td> Pod Kill - dbserver-84b5c9577d-nmrwx - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/db.dbserver-84b5c9577d-nmrwx-redundancy-test-20190408_074557_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/db.dbserver-84b5c9577d-nmrwx-redundancy-test-20190408_074557.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 28 </td>
+            <td> 2019-April-08_11h-44m-46s_UTC </td>
+            <td> Worker Node Add - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Add_Redundancy-Test-20190408_074446_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Add_Redundancy-Test-20190408_074446.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 27 </td>
+            <td> 2019-April-08_11h-43m-38s_UTC </td>
+            <td> Kubelet Restart - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.kubelet_restart_Redundancy-Test-20190408_074338_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.kubelet_restart_Redundancy-Test-20190408_074338.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 26 </td>
+            <td> 2019-April-08_11h-42m-13s_UTC </td>
+            <td> Etcd Node Add - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Etcd_Node_Add_Redundancy-Test-20190408_074213_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Etcd_Node_Add_Redundancy-Test-20190408_074213.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 25 </td>
+            <td> 2019-April-08_11h-40m-56s_UTC </td>
+            <td> Worker Node Delete - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Delete_Redundancy-Test-20190408_074056_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Delete_Redundancy-Test-20190408_074056.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 24 </td>
+            <td> 2019-April-08_11h-39m-46s_UTC </td>
+            <td> Dockerd Restart - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.docker_restart_Redundancy-Test-20190408_073946_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.docker_restart_Redundancy-Test-20190408_073946.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 23 </td>
+            <td> 2019-April-08_11h-38m-36s_UTC </td>
+            <td> ETCD Node Delete - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.ETCD_Node_Delete_Redundancy-Test-20190408_073836_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.ETCD_Node_Delete_Redundancy-Test-20190408_073836.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 22 </td>
+            <td> 2019-April-08_11h-36m-10s_UTC </td>
+            <td> Drain Node - Evict Pods - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Node-Drain_Redundancy-Test-20190408_073610_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Node-Drain_Redundancy-Test-20190408_073610.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 21 </td>
+            <td> 2019-April-08_11h-35m-04s_UTC </td>
+            <td> Docker Kill Container - appserver-6cdb646458-tml78 - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/default.appserver-6cdb646458-tml78_Redundancy-Test-20190408_073505_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/default.appserver-6cdb646458-tml78_Redundancy-Test-20190408_073505.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 20 </td>
+            <td> 2019-April-08_11h-32m-56s_UTC </td>
+            <td> Pod Kill - infraserver-5fffd8745b-nms7w - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/infra.infraserver-5fffd8745b-nms7w-redundancy-test-20190408_073256_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/infra.infraserver-5fffd8745b-nms7w-redundancy-test-20190408_073256.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 19 </td>
+            <td> 2019-April-08_11h-31m-48s_UTC </td>
+            <td> Pod Kill - dbserver-84b5c9577d-gk56d - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/db.dbserver-84b5c9577d-gk56d-redundancy-test-20190408_073148_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/db.dbserver-84b5c9577d-gk56d-redundancy-test-20190408_073148.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 18 </td>
+            <td> 2019-April-08_11h-30m-36s_UTC </td>
+            <td> Worker Node Add - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Add_Redundancy-Test-20190408_073036_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Add_Redundancy-Test-20190408_073036.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 17 </td>
+            <td> 2019-April-08_11h-29m-28s_UTC </td>
+            <td> Kubelet Restart - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.kubelet_restart_Redundancy-Test-20190408_072928_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.kubelet_restart_Redundancy-Test-20190408_072928.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 16 </td>
+            <td> 2019-April-08_11h-28m-04s_UTC </td>
+            <td> Etcd Node Add - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Etcd_Node_Add_Redundancy-Test-20190408_072804_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Etcd_Node_Add_Redundancy-Test-20190408_072804.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 15 </td>
+            <td> 2019-April-08_11h-26m-46s_UTC </td>
+            <td> Worker Node Delete - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Delete_Redundancy-Test-20190408_072646_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Delete_Redundancy-Test-20190408_072646.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 14 </td>
+            <td> 2019-April-08_11h-25m-36s_UTC </td>
+            <td> Dockerd Restart - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.docker_restart_Redundancy-Test-20190408_072536_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.docker_restart_Redundancy-Test-20190408_072536.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 13 </td>
+            <td> 2019-April-08_11h-24m-26s_UTC </td>
+            <td> ETCD Node Delete - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.ETCD_Node_Delete_Redundancy-Test-20190408_072426_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.ETCD_Node_Delete_Redundancy-Test-20190408_072426.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 12 </td>
+            <td> 2019-April-08_11h-22m-08s_UTC </td>
+            <td> Drain Node - Evict Pods - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Node-Drain_Redundancy-Test-20190408_072208_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Node-Drain_Redundancy-Test-20190408_072208.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 11 </td>
+            <td> 2019-April-08_11h-21m-02s_UTC </td>
+            <td> Docker Kill Container - speaker-f9mxg - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/metallb-system.speaker-f9mxg_Redundancy-Test-20190408_072102_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/metallb-system.speaker-f9mxg_Redundancy-Test-20190408_072102.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 10 </td>
+            <td> 2019-April-08_11h-18m-52s_UTC </td>
+            <td> Pod Kill - infraserver-5fffd8745b-pvjh9 - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/infra.infraserver-5fffd8745b-pvjh9-redundancy-test-20190408_071852_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/infra.infraserver-5fffd8745b-pvjh9-redundancy-test-20190408_071852.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 9 </td>
+            <td> 2019-April-08_11h-17m-42s_UTC </td>
+            <td> Pod Kill - dbserver-84b5c9577d-pvlp9 - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/db.dbserver-84b5c9577d-pvlp9-redundancy-test-20190408_071742_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/db.dbserver-84b5c9577d-pvlp9-redundancy-test-20190408_071742.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 8 </td>
+            <td> 2019-April-08_11h-16m-32s_UTC </td>
+            <td> Worker Node Add - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Add_Redundancy-Test-20190408_071632_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Add_Redundancy-Test-20190408_071632.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 7 </td>
+            <td> 2019-April-08_11h-15m-24s_UTC </td>
+            <td> Kubelet Restart - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.kubelet_restart_Redundancy-Test-20190408_071524_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.kubelet_restart_Redundancy-Test-20190408_071524.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 6 </td>
+            <td> 2019-April-08_11h-14m-00s_UTC </td>
+            <td> Etcd Node Add - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Etcd_Node_Add_Redundancy-Test-20190408_071400_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Etcd_Node_Add_Redundancy-Test-20190408_071400.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 5 </td>
+            <td> 2019-April-08_11h-12m-44s_UTC </td>
+            <td> Worker Node Delete - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Delete_Redundancy-Test-20190408_071244_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Worker_Node_Delete_Redundancy-Test-20190408_071244.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 4 </td>
+            <td> 2019-April-08_11h-11m-34s_UTC </td>
+            <td> Dockerd Restart - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.docker_restart_Redundancy-Test-20190408_071134_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.docker_restart_Redundancy-Test-20190408_071134.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 3 </td>
+            <td> 2019-April-08_11h-10m-24s_UTC </td>
+            <td> ETCD Node Delete - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.ETCD_Node_Delete_Redundancy-Test-20190408_071024_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.ETCD_Node_Delete_Redundancy-Test-20190408_071024.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 2 </td>
+            <td> 2019-April-08_11h-07m-59s_UTC </td>
+            <td> Drain Node - Evict Pods - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Node-Drain_Redundancy-Test-20190408_070759_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/kube-system.Node-Drain_Redundancy-Test-20190408_070759.log>Log File</a> </td>
+        </tr>
+        <tr>
+            <td> 1 </td>
+            <td> 2019-April-08_11h-06m-53s_UTC </td>
+            <td> Docker Kill Container - appserver-6cdb646458-m5cfr - Random </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td style='color:green;''><b> SUCCESS </b></td>
+            <td> No Crash &#128556</td>
+            <td> 0 Crashes &#128556 - <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/default.appserver-6cdb646458-m5cfr_Redundancy-Test-20190408_070654_crashes.txt>Details</a></td>
+            <td> <a href=http://10.84.16.161/logs/20190408_070653-v21.12.78323/default.appserver-6cdb646458-m5cfr_Redundancy-Test-20190408_070654.log>Log File</a> </td>
+        </tr>
+      </tbody>
+    </table>
+  <script src='https://code.jquery.com/jquery-1.11.2.min.js'></script>
+  <script  src="js/index.js"></script>
+</body>
+</html>
