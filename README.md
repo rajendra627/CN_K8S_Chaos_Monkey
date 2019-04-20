@@ -1,2 +1,4 @@
-# CN_K8S_Chaos_Monkey
-CN_K8S_Chaos_Monkey
+
+just unzip in one folder in your laptop
+
+and open Index.html with Firefox...that's it...
